@@ -2,7 +2,7 @@
 
 This project generates simulated single-cell RNA-seq files with given gene fusions.
 
-# Generating Reads from Given Fusion Transcripts
+## Generating Reads from Given Fusion Transcripts
 
 We use [FusionSimulatorToolkit](https://github.com/FusionSimulatorToolkit/FusionSimulatorToolkit/wiki) to generate reads from fusion transcripts.
 
@@ -35,7 +35,7 @@ Run scripts below:
                               0.01  2000  sim_reads`
 
 
-# Generating Background Reads
+## Generating Background Reads
 
 `$TRINITY_HOME/util/align_and_estimate_abundance.pl 
                     --transcripts hg19.cdna.fa 
@@ -57,11 +57,11 @@ Run scripts below:
                               target.forSimulation.RSEM.isoforms.result
                               0.01  4000000  sim_reads`
 
-# Generate Artifact Library
+## Generate Artifact Library
 
 `python BuildTechnicalArtiLibM2.py hg19.cdna.fa Lib.txt`
 
-# Generate Reads from artifacts
+## Generate Reads from artifacts
 
 `python AddChimeric_SimuChimeric.py Lib.txt OUTDIR 1 1000 100`
 
