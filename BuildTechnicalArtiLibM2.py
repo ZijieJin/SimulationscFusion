@@ -1,7 +1,7 @@
 import sys
 import random
 import math
-
+import numpy
 
 def ReverseComplement(str):
     return str[::-1].replace('A', 't').replace('T', 'a').replace('G', 'c').replace('C', 'g').upper()
@@ -41,7 +41,6 @@ powerscale2 = 2
 refinecdnas = {}
 cdnafile = open(sys.argv[1])
 chimericoutfile = open(sys.argv[2], 'w')
-partialfile = open(sys.argv[3], 'w')
 lastpos = ''
 for line in cdnafile.readlines():
     if line.startswith('>'):
@@ -67,10 +66,12 @@ while librarycount < LibrarySize:
     seq2length = min(round(len(refinecdnas[selectseqs[1]]) * 0.75), 1000)
     if seq1length < 150 or seq2length < 150:
         continue
-    #seq1start = random.randint(10, len(refinecdnas[selectseqs[0]]) - seq1length - 10)
+    if numpy.random.uniform(0, 1) < 0.15:  
     seq1start = refinecdnas[selectseqs[0]].rfind('GT') - seq1length
-    #seq2start = random.randint(10, len(refinecdnas[selectseqs[1]]) - seq2length - 10)
     seq2start = refinecdnas[selectseqs[1]].find('AG', 10) + 2
+    else:
+        seq1start = random.randint(10, len(refinecdnas[selectseqs[0]]) - seq1length - 10)
+        seq2start = random.randint(10, len(refinecdnas[selectseqs[1]]) - seq2length - 10)
     if seq1start < 0 or seq1start > len(refinecdnas[selectseqs[0]]) - seq1length - 10:
         continue
     if seq2start > len(refinecdnas[selectseqs[1]]) - seq2length or seq2start <= 6:
@@ -113,6 +114,5 @@ while librarycount < LibrarySize:
         partial = thisread[seq1length-30:seq1length+30].upper()
         chimericoutfile.write('>' + seqinfo1[0] + ':' + str(brkpnt1pos) + ':' + direct1 + '|' + seqinfo2[0] + ':' + str(brkpnt2pos) + ':' + direct2 + '_' + str(totalbondscore) + '\n')
         chimericoutfile.write(thisread + '\n')
-        partialfile.write(partial + '\t30\n')
         librarycount += 1
 
