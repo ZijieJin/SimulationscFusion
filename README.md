@@ -57,4 +57,12 @@ Run scripts below:
                               target.forSimulation.RSEM.isoforms.result
                               0.01  4000000  sim_reads`
 
+# Generate Artifact Library
 
+`python BuildTechnicalArtiLibM2.py hg19.cdna.fa Lib.txt`
+
+# Generate Reads from artifacts
+
+`python AddChimeric_SimuChimeric.py Lib.txt OUTDIR 1 1000 100`
+
+Now, 1000 fastq files are generated. 
