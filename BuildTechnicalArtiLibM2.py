@@ -34,7 +34,7 @@ def poswisedist(str1, str2):
 
 
 ### Pars ###
-LibrarySize = 30000
+LibrarySize = 2200000
 powerscale2 = 2
 
 
