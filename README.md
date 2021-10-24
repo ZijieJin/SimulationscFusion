@@ -32,7 +32,7 @@ Run scripts below:
 `$RSEM_HOME/rsem-simulate-reads TrueFusion.fa.RSEM
                               RSEM_outdir/RSEM.stat/RSEM.model
                               target.forSimulation.RSEM.isoforms.result
-                              0.01  2000  sim_reads`
+                              0.01  2000  sim_reads_part1`
 
 
 ## Generating Background Reads
@@ -55,7 +55,7 @@ Run scripts below:
 `$RSEM_HOME/rsem-simulate-reads hg19.cdna.fa.RSEM
                               RSEM_outdir/RSEM.stat/RSEM.model
                               target.forSimulation.RSEM.isoforms.result
-                              0.01  4000000  sim_reads`
+                              0.01  4000000  sim_reads_part2`
 
 ## Generate Artifact Library
 
@@ -65,4 +65,4 @@ Run scripts below:
 
 `python AddChimeric_SimuChimeric.py Lib.txt OUTDIR 1 1000 100`
 
-Now, 1000 fastq files are generated. 
+Combine the read files from above three steps to generate final fastq files. 
