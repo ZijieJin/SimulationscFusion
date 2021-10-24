@@ -49,7 +49,7 @@ for k in range(start, end+1):
         totallength = len(chimericdict[i][1])
         if i not in factor:
             factor[i] = numpy.random.binomial(1, 0.8)
-            expr[i] = int(numpy.random.binomial(1, 0.00025) * 20 * numpy.exp(numpy.random.normal(0, 0.2)) + 1 + numpy.exp(numpy.random.normal(0, 0.2)))
+            expr[i] = int(numpy.random.binomial(1, 0.00025) * 30 * numpy.exp(numpy.random.normal(0, 0.2)) + 1 + numpy.exp(numpy.random.normal(0, 0.2)))
         numreads = int(numpy.random.binomial(totalread, chimericdict[i][2] / weightsum, 1)) * (1 + numpy.random.negative_binomial(1,0.6)) * (1 + factor[i] * numpy.random.binomial(2,0.625)) * expr[i]
         if numreads <= 0:
             continue
